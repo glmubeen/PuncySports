@@ -28,13 +28,10 @@ import endPoints from '../../constants/endPoints';
 import {useDispatch, useSelector} from 'react-redux';
 import {setLoader} from '../../redux/globalSlice';
 import {setUser} from '../../redux/userSlice';
-import languages from '../../lang/languages';
 
 const Login = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-
-  const selectedLang = useSelector(state => state.language.selectedLang);
 
   const SignInSchema = Yup.object().shape({
     email: Yup.string()
@@ -90,12 +87,12 @@ const Login = () => {
           flex: 1,
           width: '100%',
           alignItems: 'center',
-          justifyContent: 'center',
+          marginTop: heightPercentageToDP(4),
         }}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
           <View style={styles.wrapper}>
-            <Text style={styles.heading}>{languages[selectedLang].signIn}</Text>
+            <Text style={styles.heading}>Login</Text>
             <Formik
               initialValues={{
                 email: 'xyz123@yopmail.com',
@@ -116,10 +113,7 @@ const Login = () => {
               }) => (
                 <View>
                   <Text style={styles.titleStyle}>
-                    {
-                      languages[selectedLang]
-                        .pleaseEnterYourEmailAddressandPassword
-                    }
+                    Please Enter Your Email Address and Password'
                   </Text>
                   <Input
                     placeholderText={'Email Address'}
@@ -144,14 +138,12 @@ const Login = () => {
                   />
                   <PrimaryButton
                     disabled={!isValid}
-                    text={languages[selectedLang].signIn}
+                    text={'Sign In'}
                     onPress={handleSubmit}
                     style={{marginTop: heightPercentageToDP(5)}}
                   />
                   <Pressable onPress={() => navigation.navigate('Register')}>
-                    <Text style={styles.text2}>
-                      {languages[selectedLang].createaAccount}
-                    </Text>
+                    <Text style={styles.text2}>Create a Account</Text>
                   </Pressable>
                 </View>
               )}

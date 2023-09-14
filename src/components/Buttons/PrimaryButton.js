@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: !isValid ? colors.primary : colors.textLight,
-    borderRadius: widthPercentageToDP(100),
+    borderRadius: widthPercentageToDP(2),
     marginTop: heightPercentageToDP(1),
   }),
   text: {

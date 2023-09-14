@@ -5,11 +5,12 @@ import {store} from './src/redux/store';
 import Toast from 'react-native-toast-message';
 import persistStore from 'redux-persist/es/persistStore';
 import {PersistGate} from 'redux-persist/integration/react';
-import {Platform, SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar} from 'react-native';
 
 import Loader from './src/components/Loader';
 import Splash from './src/screens/Auth/Splash';
 import RootStack from './src/navigation/RootStack';
+import colors from './src/constants/colors';
 
 let persistor = persistStore(store);
 
@@ -28,11 +29,8 @@ const App = () => {
         <Splash />
       ) : (
         <>
-          <SafeAreaView>
-            <StatusBar
-              barStyle={Platform.OS === 'android' ? 'dark-content' : 'default'}
-              backgroundColor={'white'}
-            />
+          <SafeAreaView style={{backgroundColor: colors.bg}}>
+            <StatusBar barStyle={'light-content'} backgroundColor={colors.bg} />
           </SafeAreaView>
           <Provider store={store}>
             <Loader />

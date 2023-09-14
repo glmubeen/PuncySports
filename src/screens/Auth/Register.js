@@ -4,8 +4,10 @@ import {
 } from 'react-native-responsive-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
+  Image,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -26,14 +28,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import apiRequest from '../../utils/apiRequest';
 import endPoints from '../../constants/endPoints';
 import {setLoader} from '../../redux/globalSlice';
-import languages from '../../lang/languages';
+import images from '../../assets/images';
 
 const Register = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-
-  const selectedLang = useSelector(state => state.language.selectedLang);
-  const provider = useSelector(state => state.language.provider);
 
   const SignUpSchema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
@@ -92,14 +91,21 @@ const Register = () => {
           flex: 1,
           width: '100%',
           alignItems: 'center',
-          justifyContent: 'center',
+          marginTop: heightPercentageToDP(4),
         }}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
           <View style={styles.wrapper}>
-            <Text style={styles.heading}>
-              {languages[selectedLang].registerAccount}
-            </Text>
+            <View style={styles.header}>
+              <Pressable onPress={() => navigation.goBack()}>
+                <Image
+                  source={images.down_arrow}
+                  style={styles.dropDownIc}
+                  resizeMode="contain"
+                />
+              </Pressable>
+              <Text style={styles.heading}>Register Account</Text>
+            </View>
             <Formik
               initialValues={{
                 username: '',
@@ -165,7 +171,7 @@ const Register = () => {
                   />
                   <PrimaryButton
                     disabled={!isValid}
-                    text={languages[selectedLang].register}
+                    text={'Register'}
                     onPress={handleSubmit}
                     style={{marginTop: heightPercentageToDP(3)}}
                   />
@@ -189,6 +195,16 @@ const styles = StyleSheet.create({
   wrapper: {
     width: '90%',
     alignSelf: 'center',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: widthPercentageToDP(2),
+  },
+  dropDownIc: {
+    width: widthPercentageToDP(5),
+    height: widthPercentageToDP(5),
+    transform: [{rotate: '90deg'}],
   },
   heading: {
     textAlign: 'left',

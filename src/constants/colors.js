@@ -1,12 +1,12 @@
 export default colors = {
   // primary colors
-  primary: '#7900cb',
+  primary: '#7764f2',
   primaryLight: '#b445ff',
   primaryLightExtra: '#f4e2ff',
   onPrimary: '#fff',
 
   // secondary colors
-  secondary: '#1e0297',
+  secondary: '#252a4a',
   secondaryLight: '#6642ff',
   onSecondary: '#fff',
 
@@ -20,5 +20,5 @@ export default colors = {
   danger: '#e60404',
   white: '#fff',
   black: '#000',
-  bg: '#fdfdfd',
+  bg: '#1c203b',
 };

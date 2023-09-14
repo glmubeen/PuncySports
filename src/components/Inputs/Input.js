@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     height: heightPercentageToDP(6),
     backgroundColor: '#f4f4f4',
     justifyContent: 'center',
-    borderRadius: widthPercentageToDP(100),
+    borderRadius: widthPercentageToDP(2),
     borderColor: '#d7d7d7',
     borderWidth: 0.5,
   }),
